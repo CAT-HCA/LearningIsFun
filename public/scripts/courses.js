@@ -2,7 +2,7 @@
 
 //document ready event handler
 $(function() {
-    let ddObjs;
+	let ddObjs;
 
 	//retrieving category data from json file
 	$.getJSON("/api/categories", function(data) {
@@ -12,26 +12,47 @@ $(function() {
 		}
 	});
 
-    $("#catSelect").on("change", function() {
-	$.getJSON(("/api/courses/bycategory/" + $("#catSelect").val()), function(data) {
-
-        let coursesObjs = data;
-        $("#tableBody").empty();
-		let objLen = coursesObjs.length;
-		for (let i = 0; i < objLen; i++) {
-			let dynamicTableRow =
-				"<tr><td>" +
-				coursesObjs[i].CourseId +
-				"</td><td>" +
-				coursesObjs[i].Title +
-				"</td><td>" +
-				coursesObjs[i].StartDate +
-				"</td><td><a href='details.html?id=" +
-				coursesObjs[i].CourseId +
-				"'>View Details</a></td></tr>";
-            $("#tableBody").append(dynamicTableRow);
-            $("#courseTblOutput").show();
-		}
+	$("#catSelect").on("change", function() {
+		$.getJSON("/api/courses/bycategory/" + $("#catSelect").val(), function(data) {
+			let coursesObjs = data;
+			$("#tableBody").empty();
+			let objLen = coursesObjs.length;
+			for (let i = 0; i < objLen; i++) {
+				let dynamicTableRow =
+					"<tr><td>" +
+					coursesObjs[i].CourseId +
+					"</td><td>" +
+					coursesObjs[i].Title +
+					"</td><td>" +
+					coursesObjs[i].StartDate +
+					"</td><td><a href='details.html?id=" +
+					coursesObjs[i].CourseId +
+					"'>View Details</a></td></tr>";
+				$("#tableBody").append(dynamicTableRow);
+				$("#courseTblOutput").show();
+			}
+		});
     });
+    
+    $("#showAllBtn").on("click", function() {
+		$.getJSON("/api/courses/", function(data) {
+			let coursesObjs = data;
+			$("#tableBody").empty();
+			let objLen = coursesObjs.length;
+			for (let i = 0; i < objLen; i++) {
+				let dynamicTableRow =
+					"<tr><td>" +
+					coursesObjs[i].CourseId +
+					"</td><td>" +
+					coursesObjs[i].Title +
+					"</td><td>" +
+					coursesObjs[i].StartDate +
+					"</td><td><a href='details.html?id=" +
+					coursesObjs[i].CourseId +
+					"'>View Details</a></td></tr>";
+				$("#tableBody").append(dynamicTableRow);
+				$("#courseTblOutput").show();
+			}
+		});
+	});
 });
-})
