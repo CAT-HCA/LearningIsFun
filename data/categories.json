@@ -1,0 +1,54 @@
+[
+    {
+        "Category": "Arts",
+        "Value": "Arts"
+    },
+    {
+        "Category": "Computers and Technology",
+        "Value": "CompTech"
+    },
+    {
+        "Category": "Family Life",
+        "Value": "FamLife"
+    },
+    {
+        "Category": "Food and Beverage",
+        "Value": "FoodBev"
+    },
+    {
+        "Category": "Health and Wellness",
+        "Value": "HealWell"
+    },
+    {
+        "Category": "History and Culture",
+        "Value": "HistCult"
+    },
+    {
+        "Category": "Language",
+        "Value": "Lang"
+    },
+    {
+        "Category": "Music",
+        "Value": "Mus"
+    },
+    {
+        "Category": "Personal Development",
+        "Value": "PersDev"
+    },
+    {
+        "Category": "Photography",
+        "Value": "Photo"
+    },
+    {
+        "Category": "Test Prep",
+        "Value": "Test"
+    },
+    {
+        "Category": "Travel",
+        "Value": "Travel"
+    },
+    {
+        "Category": "Writing and Literature",
+        "Value": "WritLit"
+    }
+]
