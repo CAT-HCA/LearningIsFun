@@ -13,8 +13,8 @@
     <!-- linking custom site CSS -->
     <link rel="stylesheet" type="text/css" href="css/site.css">
 
-    <!-- linking custom page CSS -->
-    <link rel="stylesheet" type="text/css" href="css/details.css">
+        <!-- linking custom site CSS -->
+        <link rel="stylesheet" type="text/css" href="css/details.css">
 
     <!--Font Awesome link-->
     <script src="https://kit.fontawesome.com/d9e1614114.js"></script>
@@ -40,9 +40,47 @@
         </div>
     </nav>
     <!--END NAV BAR-->
+    <!-- BREADCRUMB NAV-->
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="courses.html">Browse Courses</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Course Details</li>
+        </ol>
+    </nav>
 
+    <!-- END OF BREADCRUMB NAV-->
     <!-- MAIN CONTENT -->
-    
+    <main class="container mt-3">
+        <!--Display results table, dynamically created in js-->
+        <h1 class="text-primary text-center font-weight-light mt-3">Course Details</h1>
+        <form id="detailTblOutputForm" action="#" method="get">
+            <table id="detailTblOutput" class="container table table-sm table-bordered table-striped col-8">
+                <thead>
+                </thead>
+                <tbody id="tableBody">
+                </tbody>
+            </table>
+        </form>
+        <section>
+            <hr>
+            <h2 class="text-primary text-center font-weight-light mt-3">Students Enrolled in this Class</h2>
+            <table id="studentTable">
+            </table>
+            <aside id="noStudentsDiv">
+                <p class="text-center mt-3">There are currently no students enrolled in this course.</p>
+            </aside>
+            <table class="container table table-sm table-bordered table-striped col-8">
+                    <thead id="studentTblOutput">
+                        <tr>
+                            <th>Student Name</th>
+                            <th>Student Email</th>
+                        </tr>
+                    </thead>
+                    <tbody id="studentTableBody">
+                    </tbody>
+                </table>
+        </section>
+    </main>
 
     <!-- END OF MAIN CONTENT -->
 
@@ -50,7 +88,8 @@
     <footer class=" w-100 footer border-top border-primary">
         <div class="col-12 text-center">
             <p>Cori Trudeau - HartCode Academy 2019 <br>
-                <span class="font-weight-light mt-1">Disclaimer: This is a fictional company and site for educational
+                <span class="font-weight-light mt-1">Disclaimer: This is a fictional company and site for
+                    educational
                     purposes only.</span></p>
         </div>
     </footer>

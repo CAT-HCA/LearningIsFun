@@ -15,44 +15,33 @@ $(function() {
 	$("#catSelect").on("change", function() {
 		$.getJSON("/api/courses/bycategory/" + $("#catSelect").val(), function(data) {
 			let coursesObjs = data;
-			$("#tableBody").empty();
-			let objLen = coursesObjs.length;
-			for (let i = 0; i < objLen; i++) {
-				let dynamicTableRow =
-					"<tr><td>" +
-					coursesObjs[i].CourseId +
-					"</td><td>" +
-					coursesObjs[i].Title +
-					"</td><td>" +
-					coursesObjs[i].StartDate +
-					"</td><td><a href='details.html?id=" +
-					coursesObjs[i].CourseId +
-					"'>View Details</a></td></tr>";
-				$("#tableBody").append(dynamicTableRow);
-				$("#courseTblOutput").show();
-			}
+			createCourseTable(coursesObjs);
 		});
-    });
-    
-    $("#showAllBtn").on("click", function() {
+	});
+
+	$("#showAllBtn").on("click", function() {
 		$.getJSON("/api/courses/", function(data) {
 			let coursesObjs = data;
-			$("#tableBody").empty();
-			let objLen = coursesObjs.length;
-			for (let i = 0; i < objLen; i++) {
-				let dynamicTableRow =
-					"<tr><td>" +
-					coursesObjs[i].CourseId +
-					"</td><td>" +
-					coursesObjs[i].Title +
-					"</td><td>" +
-					coursesObjs[i].StartDate +
-					"</td><td><a href='details.html?id=" +
-					coursesObjs[i].CourseId +
-					"'>View Details</a></td></tr>";
-				$("#tableBody").append(dynamicTableRow);
-				$("#courseTblOutput").show();
-			}
+			createCourseTable(coursesObjs);
 		});
 	});
 });
+
+function createCourseTable(coursesObjs) {
+	$("#coursesTableBody").empty();
+	let objLen = coursesObjs.length;
+	for (let i = 0; i < objLen; i++) {
+		let dynamicTableRow =
+			"<tr><td>" +
+			coursesObjs[i].CourseId +
+			"</td><td>" +
+			coursesObjs[i].Title +
+			"</td><td>" +
+			coursesObjs[i].StartDate +
+			"</td><td><a href='details.html?id=" +
+			coursesObjs[i].CourseId +
+			"'>View Details</a></td></tr>";
+		$("#coursesTableBody").append(dynamicTableRow);
+		$("#courseTblOutput").show();
+	}
+}
