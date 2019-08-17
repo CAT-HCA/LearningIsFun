@@ -15,12 +15,10 @@
     <link rel="stylesheet" type="text/css" href="css/register.css">
 
 
-    <!--Font Awesome link-->
-    <script src="https://kit.fontawesome.com/d9e1614114.js"></script>
-
     <!--Title and favicon in tab-->
     <link rel="icon" href="images/favicon.png" type="image/x-icon" />
-    <title id="courseRegisterTitle"></title>
+    <!--receiving validation error for empty title, this text goes away once JS catches course name-->
+    <title id="courseRegisterTitle">*dynamically created*</title>
 </head>
 
 <body>
@@ -88,8 +86,7 @@
                 <input class="btn btn-danger w-25" type="button" id="cancelBtn" name="cancelBtn" value="Clear Fields">
             </div>
             <div class="text-center mt-3">
-                <input class="btn btn-primary w-25" type="button" id="goBackBtn" name="goBackBtn"
-                    value="Go back">
+                <input class="btn btn-primary w-25" type="button" id="goBackBtn" name="goBackBtn" value="Go back">
             </div>
         </form>
     </main>

@@ -5,9 +5,8 @@ $(function() {
 	//pulling course ID form query string
 	let urlParams = new URLSearchParams(location.search);
 	let courseId = urlParams.get("id");
-	let courseName = urlParams.get("name");
-	$("#courseRegisterTitle").html("Register for: " + courseName)
-	$("#courseNameField").html(courseName);
+	$("#courseRegisterTitle").html("Register for: " + courseId);
+	$("#courseNameField").html(courseId);
 	let previousUrl = document.referrer;
 
 	//populating breadcrumb to direct back to course details for course id
@@ -20,17 +19,21 @@ $(function() {
 	//register button click event
 	$("#confirmRegBtn").on("click", function() {
 		let nameValidationResult = validateNameField();
+		//if the name doesn't validate, call disable button function
 		if (nameValidationResult == false) {
 			disableButton();
-		}else{
+		}
+		//if it does, check email validation, if it fails, call disable button function
+		else {
 			let emailValidationResult = validateEmailField(courseId);
 			if (emailValidationResult == false) {
-			disableButton();
-			} 
+				disableButton();
+			}
+			//if all validation passed, call function to post student
 			else {
-			postNewStudent(courseId)
+				postNewStudent(courseId);
+			}
 		}
-	}
 	});
 
 	//cancel button click event
@@ -38,16 +41,14 @@ $(function() {
 		$("#studentNameInput").val("");
 		$("#studentEmailInput").val("");
 		$("#errorDiv").hide();
-		$("#errorDiv").html("")
+		$("#errorDiv").html("");
 		$("#confirmRegBtn").prop("disabled", false);
 	});
 
-		//cancel button click event
-		$("#goBackBtn").on("click", function() {
-			window.location.assign(previousUrl);
-		});
-
-
+	//cancel button click event
+	$("#goBackBtn").on("click", function() {
+		window.location.assign(previousUrl);
+	});
 });
 
 //function for validating name field
@@ -59,13 +60,13 @@ function validateNameField() {
 	} else {
 		//in case revalidating after user updated field
 		$("#errorDiv").hide();
-		$("#errorDiv").html("")
+		$("#errorDiv").html("");
 		return true;
 	}
 }
-
+//function to validate email field
 function validateEmailField(courseId) {
-	//if is it empty?
+	//check for empty
 	if ($("#studentEmailInput").val() == "") {
 		$("#errorDiv").html("Please enter a valid email address");
 		$("#errorDiv").show();
@@ -73,22 +74,25 @@ function validateEmailField(courseId) {
 	} else {
 		//in case revalidating after user updated field
 		$("#errorDiv").hide();
-		$("#errorDiv").html("")
+		$("#errorDiv").html("");
 		let emailPattern = new RegExp(
 			"^([0-9a-zA-Z]([-.w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-w]*[0-9a-zA-Z].)+[a-zA-Z]{2,9})$"
 		);
-
+		//check against regex pattern
 		if (emailPattern.test($("#studentEmailInput").val()) != true) {
 			$("#errorDiv").html("Please enter a valid email address");
 			$("#errorDiv").show();
 			return false;
-		} else {
+		}
+		//in future - work on implementing code saved in notepad for confirming if email address already registered for course
+		//email validation passed
+		else {
 			return true;
 		}
 	}
 }
 
-//disable button function
+//disable and re-enable button function
 function disableButton() {
 	$("#confirmRegBtn").prop("disabled", true);
 
@@ -104,7 +108,11 @@ function disableButton() {
 		return true;
 	});
 }
-function postNewStudent(courseId){
+
+//function to call api to post new student
+function postNewStudent(courseId) {
 	$.post("/api/register", $("#registerTblForm").serialize(), function(data) {});
-	window.location.assign("/details.html?id=" + courseId); //add param for if successful for details page to catch
+	window.location.assign("/details.html?id=" + courseId);
+	//in future, would like pass a param in query string to
+	//details page to display success and highlight last table body child green
 }
