@@ -4,6 +4,7 @@ $(function() {
 	//pulling course ID form query string
 	let urlParams = new URLSearchParams(location.search);
 	let courseId = urlParams.get("id");
+	$("#courseTitle").html("Course Details: " + courseId)
 
 	//retrieving course data from json file
 	$.getJSON("/api/courses/" + courseId, function(data) {
@@ -20,7 +21,7 @@ $(function() {
 		//dynamically populating register button to pass query string with course ID
 		let regBtnTag =
 			'<div class="text-center"><a class="btn btn-primary w-25 text-center" href="register.html?id=' +
-			courseId + '&name=' + data.Title + '" id="registerBtn">REGISTER FOR THIS COURSE</a></div>';
+			courseId + '" id="registerBtn">REGISTER FOR THIS COURSE</a></div>';
 			$("#detailTblOutputForm").append(regBtnTag);
 
 		//if there are students registered for the class, show the table
@@ -45,9 +46,7 @@ $(function() {
 * @param value (string) - value of property for selected course
 */
 function buildRow(property, value) {
-	let propString = property.split(" ");
-	let inputId = propString.join("").toLowerCase() + "OutputField";
-	let markup = "<tr><td>" + property + '</td><td id="' + inputId + '">' + value + "</td></tr>";
+	let markup = "<tr><td>" + property + '</td><td>' + value + "</td></tr>";
 	$("#tableBody").append(markup);
 }
 
@@ -57,8 +56,6 @@ function buildRow(property, value) {
 * @param value (string) - value of property for selected course
 */
 function buildStudentRow(property, value) {
-	let propString = property.split(" ");
-	let studentInputId = propString.join("").toLowerCase() + "OutputField";
-	let studentMarkup = "<tr><td>" + property + '</td><td id="' + studentInputId + '">' + value + "</td></tr>";
+	let studentMarkup = "<tr><td>" + property + '</td><td>' + value + "</td></tr>";
 	$("#studentTableBody").append(studentMarkup);
 }

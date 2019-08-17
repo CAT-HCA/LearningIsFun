@@ -1,3 +1,58 @@
+/* Custom Bootstrap Colors*/
+:root {
+	--primary: #32435f;
+}
+.text-primary {
+	color: #32435f !important;
+}
+
+.btn-primary {
+	color: #fff;
+	background-color: #32435f;
+	border-color: #32435f;
+}
+.btn-primary:hover {
+	color: #fff;
+	background-color: #253146;
+	border-color: #202b3e;
+}
+.btn-primary:focus,
+.btn-primary.focus {
+	box-shadow: 0 0 0 0.2rem rgba(81, 95, 119, 0.5);
+}
+.btn-primary.disabled,
+.btn-primary:disabled {
+	color: #fff;
+	background-color: #32435f;
+	border-color: #32435f;
+}
+.btn-primary:not(:disabled):not(.disabled):active,
+.btn-primary:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle {
+	color: #fff;
+	background-color: #202b3e;
+	border-color: #1c2635;
+}
+.btn-primary:not(:disabled):not(.disabled):active:focus,
+.btn-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+	box-shadow: 0 0 0 0.2rem rgba(81, 95, 119, 0.5);
+}
+
+.bg-primary {
+	background-color: #32435f !important;
+}
+a.bg-primary:hover,
+a.bg-primary:focus,
+button.bg-primary:hover,
+button.bg-primary:focus {
+	background-color: #202b3e !important;
+}
+
+.border-primary {
+	border-color: #32435f !important;
+}
+
 /*Nav Bar styles*/
 a.active {
 	color: #343a40;
