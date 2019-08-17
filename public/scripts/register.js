@@ -1,11 +1,15 @@
 "use strict";
 
+//document ready event handler
 $(function() {
 	//pulling course ID form query string
 	let urlParams = new URLSearchParams(location.search);
 	let courseId = urlParams.get("id");
+	let courseName = urlParams.get("name");
 
-	//populating breadcrumb to direct back to course details
+	$("#courseNameField").html(courseName);
+
+	//populating breadcrumb to direct back to course details for course id
 	let markup = $("<li class='breadcrumb-item'><a href='details.html?id=" + courseId + "'>Course Details</a></li>");
 	markup.insertBefore("#registerBreadcrumb");
 
@@ -14,54 +18,85 @@ $(function() {
 
 	//register button click event
 	$("#confirmRegBtn").on("click", function() {
-        if ($("#studentNameInput").val() == "") 
-        {
-			$("#errorDiv").html("Please be sure you have filled out all fields");
-			$("#errorDiv").show();
-        } 
-        else 
-        {
-            if ($("#emailInput").val() == "") 
-            {
-				$("#errorDiv").html("Please be sure you have filled out all fields");
-				$("#errorDiv").show();
-            } 
-            else 
-            {
-				$("#errorDiv").hide();
-				let emailValidation = validateEmail($("#emailInput").val());
-                if (emailValidation == false) 
-                {
-					$("#errorDiv").html("Please enter a valid email address");
-					$("#errorDiv").show();
-                } 
-                else 
-                {
-                    $("#errorDiv").hide();
-                    
-					$.post("/api/register", $("#registerTblForm").serialize(), function(data) {});
-					window.location.assign("/details.html?id=" + courseId);
-				}
-			}
+		let nameValidationResult = validateNameField();
+		if (nameValidationResult == false) {
+			disableButton();
+		}else{
+			let emailValidationResult = validateEmailField(courseId);
+			if (emailValidationResult == false) {
+			disableButton();
+			} 
+			else {
+			postNewStudent(courseId)
 		}
+	}
 	});
 
 	//cancel button click event
 	$("#cancelBtn").on("click", function() {
 		$("#studentNameInput").val("");
-		$("#emailInput").val("");
+		$("#studentEmailInput").val("");
 		$("#errorDiv").hide();
+		$("#errorDiv").html("")
+		$("#confirmRegBtn").prop("disabled", false);
 	});
 });
 
-function validateEmail(email) {
-	let emailPattern = new RegExp("^([0-9a-zA-Z]([-.w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-w]*[0-9a-zA-Z].)+[a-zA-Z]{2,9})$");
-
-	if (emailPattern.test(email)) {
-		return true;
-    } 
-    else 
-    {
+//function for validating name field
+function validateNameField() {
+	if ($("#studentNameInput").val() == "") {
+		$("#errorDiv").html("Please enter a valid name");
+		$("#errorDiv").show();
 		return false;
+	} else {
+		//in case revalidating after user updated field
+		$("#errorDiv").hide();
+		$("#errorDiv").html("")
+		return true;
 	}
+}
+
+function validateEmailField(courseId) {
+	//if is it empty?
+	if ($("#studentEmailInput").val() == "") {
+		$("#errorDiv").html("Please enter a valid email address");
+		$("#errorDiv").show();
+		return false;
+	} else {
+		//in case revalidating after user updated field
+		$("#errorDiv").hide();
+		$("#errorDiv").html("")
+		let emailPattern = new RegExp(
+			"^([0-9a-zA-Z]([-.w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-w]*[0-9a-zA-Z].)+[a-zA-Z]{2,9})$"
+		);
+
+		if (emailPattern.test($("#studentEmailInput").val()) != true) {
+			$("#errorDiv").html("Please enter a valid email address");
+			$("#errorDiv").show();
+			return false;
+		} else {
+			return true;
+		}
+	}
+}
+
+//disable button function
+function disableButton() {
+	$("#confirmRegBtn").prop("disabled", true);
+
+	//when user changes email field
+	$("#studentNameInput").change(function() {
+		$("#confirmRegBtn").prop("disabled", false);
+		return true;
+	});
+
+	//when user changes email field
+	$("#studentEmailInput").change(function() {
+		$("#confirmRegBtn").prop("disabled", false);
+		return true;
+	});
+}
+function postNewStudent(courseId){
+	$.post("/api/register", $("#registerTblForm").serialize(), function(data) {});
+	window.location.assign("/details.html?id=" + courseId); //add param for if successful for details page to catch
 }

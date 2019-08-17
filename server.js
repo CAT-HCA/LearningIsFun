@@ -122,8 +122,8 @@ app.get('/api/courses/:id', function (req, res) {
     let match = getMatchingCourseById(id, data)
     console.log("# founds = " + match.length)
 
-    //console.log( "Returned data is: " );
-    //logOneCourse(match);
+    console.log( "Returned data is: " );
+    logOneCourse(match);
     res.end( JSON.stringify(match) );
 })
 

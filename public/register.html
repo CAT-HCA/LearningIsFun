@@ -49,14 +49,14 @@
     <!-- END OF BREADCRUMB NAV-->
     <!-- MAIN CONTENT -->
     <main class="container mt-3">
-        <!--Display results table, dynamically created in js-->
-        <h1 class="text-primary text-center font-weight-light mt-3">Course Details</h1>
+        <h1 class="text-primary display-3 text-center font-weight-light mt-3">Enroll in a Course</h1>
+        <h2 class="text-center font-weight-light mt-5">Register for: <span id="courseNameField" class="h1 font-italic"></span></h2>
 
         <!-- Would use this with submit button in the future: 
             <form id="registerTblForm" action="/api/register" method="POST">
                     -->
         <form id="registerTblForm">
-            <table class="container table table-bordered table-striped col-8">
+            <table class="container table table-bordered table-striped col-8 mt-3">
                 <tbody>
                     <tr>
                         <td>Course ID</td>
@@ -72,7 +72,7 @@
                     </tr>
                     <tr>
                         <td>Email</td>
-                        <td><input id="emailInput" name="email" class="w-100 pl-3 text-left" type="email" />
+                        <td><input id="studentEmailInput" name="email" class="w-100 pl-3 text-left" type="email" />
                         </td>
                     </tr>
                 </tbody>
