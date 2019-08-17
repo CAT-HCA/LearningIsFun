@@ -20,7 +20,7 @@
 
     <!--Title and favicon in tab-->
     <link rel="icon" href="images/favicon.png" type="image/x-icon" />
-    <title>Greendale Community College</title>
+    <title id="courseRegisterTitle"></title>
 </head>
 
 <body>
@@ -28,7 +28,7 @@
 
     <nav class="navbar navbar-dark navbar-expand-md p-3 px-md-4 bg-primary border-bottom shadow-sm">
         <span class="navbar-brand mb-0 h1">
-            <a class="text-white navHome" href="index.html">Greendale Community College</a></span>
+            <a class="text-white navHome" href="index.html">UCONNmmunity College</a></span>
         <button class="navbar-toggler btn-white" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
             aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -50,7 +50,8 @@
     <!-- MAIN CONTENT -->
     <main class="container mt-3">
         <h1 class="text-primary display-3 text-center font-weight-light mt-3">Enroll in a Course</h1>
-        <h2 class="text-center font-weight-light mt-5">Register for: <span id="courseNameField" class="h1 font-italic"></span></h2>
+        <h2 class="text-center font-weight-light mt-5">Register for: <span id="courseNameField"
+                class="h1 font-italic"></span></h2>
 
         <!-- Would use this with submit button in the future: 
             <form id="registerTblForm" action="/api/register" method="POST">
@@ -61,13 +62,15 @@
                     <tr>
                         <td>Course ID</td>
                         <td>
-                            <input id="courseIdField" name="courseid" class="w-100 pl-3 text-left" type="text" readonly />
+                            <input id="courseIdField" name="courseid" class="w-100 pl-3 text-left" type="text"
+                                readonly />
                         </td>
                     </tr>
                     <tr>
                         <td>Name</td>
                         <td>
-                            <input id="studentNameInput" name="studentname" class="w-100 pl-3 text-left" type="text" pattern="" />
+                            <input id="studentNameInput" name="studentname" class="w-100 pl-3 text-left" type="text"
+                                pattern="" />
                         </td>
                     </tr>
                     <tr>
@@ -84,6 +87,10 @@
                     value="Confirm Registration">
                 <input class="btn btn-danger w-25" type="button" id="cancelBtn" name="cancelBtn" value="Clear Fields">
             </div>
+            <div class="text-center mt-3">
+                <input class="btn btn-primary w-25" type="button" id="goBackBtn" name="goBackBtn"
+                    value="Go back">
+            </div>
         </form>
     </main>
 
@@ -93,9 +100,7 @@
     <footer class=" w-100 footer border-top border-primary">
         <div class="col-12 text-center">
             <p>Cori Trudeau - HartCode Academy 2019 <br>
-                <span class="font-weight-light mt-1">Disclaimer: This is a fictional company and site for
-                    educational
-                    purposes only.</span></p>
+                <span class="font-weight-light mt-1">Disclaimer: This is a fictional website and University</span></p>
         </div>
     </footer>
     <!--END FOOTER-->

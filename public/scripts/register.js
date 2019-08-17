@@ -6,8 +6,9 @@ $(function() {
 	let urlParams = new URLSearchParams(location.search);
 	let courseId = urlParams.get("id");
 	let courseName = urlParams.get("name");
-
+	$("#courseRegisterTitle").html("Register for: " + courseName)
 	$("#courseNameField").html(courseName);
+	let previousUrl = document.referrer;
 
 	//populating breadcrumb to direct back to course details for course id
 	let markup = $("<li class='breadcrumb-item'><a href='details.html?id=" + courseId + "'>Course Details</a></li>");
@@ -40,6 +41,13 @@ $(function() {
 		$("#errorDiv").html("")
 		$("#confirmRegBtn").prop("disabled", false);
 	});
+
+		//cancel button click event
+		$("#goBackBtn").on("click", function() {
+			window.location.assign(previousUrl);
+		});
+
+
 });
 
 //function for validating name field

@@ -4,6 +4,7 @@ $(function() {
 	//pulling course ID form query string
 	let urlParams = new URLSearchParams(location.search);
 	let courseId = urlParams.get("id");
+	$("#courseTitle").html("Course Details: " + courseId)
 
 	//retrieving course data from json file
 	$.getJSON("/api/courses/" + courseId, function(data) {
