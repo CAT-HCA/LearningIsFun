@@ -7,18 +7,19 @@ $(function() {
 	//retrieving category data from json file
 	$.getJSON("/api/categories", function(data) {
 		ddObjs = data;
+		//loop to populate drop down options
 		for (let i = 0; i < ddObjs.length; i++) {
 			$("#catSelect").append('<option value="' + ddObjs[i].Value + '">' + ddObjs[i].Category + "</option>");
 		}
 	});
-
+	// call to courses api to pull courses matching selected category
 	$("#catSelect").on("change", function() {
 		$.getJSON("/api/courses/bycategory/" + $("#catSelect").val(), function(data) {
 			let coursesObjs = data;
 			createCourseTable(coursesObjs);
 		});
 	});
-
+	// show all button on click event handler
 	$("#showAllBtn").on("click", function() {
 		$.getJSON("/api/courses/", function(data) {
 			let coursesObjs = data;
@@ -27,6 +28,11 @@ $(function() {
 	});
 });
 
+/*
+*This function will dynamically create and populate the course table
+*and show the table header
+* @param coursesObjs (Object) - object of course data
+*/
 function createCourseTable(coursesObjs) {
 	$("#coursesTableBody").empty();
 	let objLen = coursesObjs.length;
