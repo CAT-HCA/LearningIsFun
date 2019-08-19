@@ -39,20 +39,18 @@
 
     <!-- MAIN CONTENT -->
     <main class="container mt-3">
-            <h1 class="text-primary text-center font-weight-light mt-3 display-3">Browse Courses</h1>
-            <h2 class="text-primary text-center font-weight-light mt-3">Filter by category or browse all offerings</h2>
+        <h1 class="text-primary text-center font-weight-light mt-3">Browse Courses</h1>
         <form class="container mx-auto" action="#" method="GET">
             <fieldset class="container border border-primary p-3 rounded col-6">
                 <legend class="font-weight-light bg-primary text-center text-white w-50 rounded">Filter
                 </legend>
                 <div id="catSelectDiv" class="form-group">
-                    <!--Drop down for selecting a mountain-->
+                    <!--Drop down for selecting a category-->
                     <label for="catSelect">Select a category to view available classes</label>
                     <select class="form-control" id="catSelect" name="catSelect">
-                        <option value="choose">Choose a Category...</option>
+                        <option value="-1">Choose a Category...</option>
                     </select>
                     <hr>
-                    <p class="text-center">-- or --</p>
                     <div class="text-center">
                         <input class="btn btn-primary w-50" type="button" id="showAllBtn" name="showAllBtn"
                             value="Browse all courses" />

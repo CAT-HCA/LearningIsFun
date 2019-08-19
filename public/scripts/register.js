@@ -6,6 +6,7 @@ $(function() {
 	let urlParams = new URLSearchParams(location.search);
 	let courseId = urlParams.get("id");
 	$("#courseRegisterTitle").html("Register for: " + courseId);
+	$("#courseDetailTHead").html("Register for: " + courseId);
 	$("#courseNameField").html(courseId);
 	let previousUrl = document.referrer;
 
