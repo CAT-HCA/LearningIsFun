@@ -14,10 +14,12 @@ $(function() {
 	});
 	// call to courses api to pull courses matching selected category
 	$("#catSelect").on("change", function() {
-		$.getJSON("/api/courses/bycategory/" + $("#catSelect").val(), function(data) {
-			let coursesObjs = data;
-			createCourseTable(coursesObjs);
-		});
+		if ($("#catSelect").val() != "-1") {
+			$.getJSON("/api/courses/bycategory/" + $("#catSelect").val(), function(data) {
+				let coursesObjs = data;
+				createCourseTable(coursesObjs);
+			});
+		}
 	});
 	// show all button on click event handler
 	$("#showAllBtn").on("click", function() {
@@ -29,10 +31,10 @@ $(function() {
 });
 
 /*
-*This function will dynamically create and populate the course table
-*and show the table header
-* @param coursesObjs (Object) - object of course data
-*/
+ *This function will dynamically create and populate the course table
+ *and show the table header
+ * @param coursesObjs (Object) - object of course data
+ */
 function createCourseTable(coursesObjs) {
 	$("#coursesTableBody").empty();
 	let objLen = coursesObjs.length;

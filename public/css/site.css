@@ -6,6 +6,10 @@
 	color: #32435f !important;
 }
 
+.bg-primary {
+	background-color: #32435f !important;
+}
+
 .btn-primary {
 	color: #fff;
 	background-color: #32435f;
