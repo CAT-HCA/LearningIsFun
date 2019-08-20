@@ -1,6 +1,8 @@
 
 # Learning is fun
 
+### Version 2 Release Notes
+Now with better form field validation on the Register page and currency formatting in course details, as inspired by Adam's project.
   
 
 ## Welcome to UCONNmunity College
@@ -27,6 +29,7 @@ On the details page, you can see more in depth information about each course and
  On the register page, you can enter your information to confirm your enrollment in the course.
 
   ![enter image description here](https://lh3.googleusercontent.com/aG_mfMVuLI3-6Lb_h_N7eNIVeTqtIk9pLQVYoZuT_qEiF3DmG3r0sObiDbKJbI82bSvHwmN0GWc "Register for a course")
+  
 
 ## Credits
 Jumbotron Image on index page by [Full of Whimsy Photograpy](https://fullofwhimsy.com/)
