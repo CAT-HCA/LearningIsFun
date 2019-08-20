@@ -12,13 +12,14 @@
 
     <!-- linking custom site CSS -->
     <link rel="stylesheet" type="text/css" href="css/site.css">
-    <link rel="stylesheet" type="text/css" href="css/register.css">
 
+    <!-- linking custom site CSS -->
+    <link rel="stylesheet" type="text/css" href="css/details.css">
 
     <!--Title and favicon in tab-->
     <link rel="icon" href="images/favicon.png" type="image/x-icon" />
     <!--receiving validation error for empty title, this text goes away once JS catches course name-->
-    <title id="courseRegisterTitle">*dynamically created*</title>
+    <title id="courseTitle">*dynamically created*</title>
 </head>
 
 <body>
@@ -41,57 +42,22 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="courses.html">Browse Courses</a></li>
-            <li id="registerBreadcrumb" class="breadcrumb-item active" aria-current="page">Register</li>
+            <li class="breadcrumb-item active" aria-current="page">Course Details</li>
         </ol>
     </nav>
+
     <!-- END OF BREADCRUMB NAV-->
     <!-- MAIN CONTENT -->
     <main class="container mt-3">
-        <h1 class=" text-center font-weight-light mt-3 text-primary">Enroll in this course</h1>
-
-        <!-- Would use this with submit button in the future: 
-            <form id="registerTblForm" action="/api/register" method="POST">
-                    -->
-        <form id="registerTblForm">
-            <table class="container table table-bordered table-striped col-8 mt-3">
-                <thead class="thead-dark bg-primary">
-                    <tr>
-                        <th colspan="2" id="courseDetailTHead" class="text-center bg-primary"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Course ID</td>
-                        <td>
-                            <input id="courseIdField" name="courseid" class="w-100 pl-3 text-left" type="text"
-                                readonly />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Name</td>
-                        <td>
-                            <input id="studentNameInput" name="studentname" class="w-100 pl-3 text-left" type="text"
-                                pattern="" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Email</td>
-                        <td><input id="studentEmailInput" name="email" class="w-100 pl-3 text-left" type="email" />
-                        </td>
-                    </tr>
+        <!--Display results table, dynamically created in js-->
+        <h1 class="text-primary text-center font-weight-light mt-3">Edit Course</h1>
+        <form id="detailTblOutputForm" action="#" method="GET">
+            <table id="detailTblOutput" class="container table table-sm table-bordered table-striped col-8">
+                <tbody id="tableBody">
                 </tbody>
             </table>
-            <div class="text-center">
-                <div id="errorDiv" class="mx-auto my-2 w-75 ">
-                </div>
-                <input class="btn btn-primary w-25" type="button" id="confirmRegBtn" name="confirmRegBtn"
-                    value="Confirm Registration">
-                <input class="btn btn-danger w-25" type="button" id="cancelBtn" name="cancelBtn" value="Clear Fields">
-            </div>
-            <div class="text-center mt-3">
-                <input class="btn btn-primary w-25" type="button" id="goBackBtn" name="goBackBtn" value="Go back">
-            </div>
         </form>
+
     </main>
 
     <!-- END OF MAIN CONTENT -->
@@ -114,7 +80,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-    <script src="scripts/register.js"></script>
+    <script src="scripts/details.js"></script>
 </body>
 
 </html>
