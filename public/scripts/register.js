@@ -6,8 +6,12 @@ $(function() {
 	let urlParams = new URLSearchParams(location.search);
 	let courseId = urlParams.get("id");
 	$("#courseRegisterTitle").html("Register for: " + courseId);
-	$("#courseDetailTHead").html("Register for: " + courseId);
-	$("#courseNameField").html(courseId);
+	//retrieving course data from json file
+	$.getJSON("/api/courses/" + courseId, function(data) {
+		let courseName = data.Title
+	$("#courseDetailTHead").html('<span class="font-weight-light">Registering for: </span>' + courseName);
+	});
+
 	let previousUrl = document.referrer;
 
 	//populating breadcrumb to direct back to course details for course id
@@ -54,7 +58,7 @@ $(function() {
 
 //function for validating name field
 function validateNameField() {
-	if ($("#studentNameInput").val() == "") {
+	if (($("#studentNameInput").val()).trim() == "") {
 		$("#errorDiv").html("Please enter a valid name");
 		$("#errorDiv").show();
 		return false;
@@ -68,7 +72,7 @@ function validateNameField() {
 //function to validate email field
 function validateEmailField(courseId) {
 	//check for empty
-	if ($("#studentEmailInput").val() == "") {
+	if (($("#studentEmailInput").val()).trim() == "") {
 		$("#errorDiv").html("Please enter a valid email address");
 		$("#errorDiv").show();
 		return false;

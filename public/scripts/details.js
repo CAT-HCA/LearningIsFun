@@ -15,7 +15,7 @@ $(function() {
 		buildRow("Start Date", data.StartDate);
 		buildRow("End Date", data.EndDate);
 		buildRow("Meets", data.Meets);
-		buildRow("Fee", "$" + data.Fee);
+		buildRow("Fee", "$" + Number(data.Fee).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2 }));
 		buildRow("Students Enrolled", data.Students.length);
 
 		//dynamically populating register button to pass query string with course ID
