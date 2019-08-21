@@ -64,12 +64,24 @@
                         <input type="text" class="form-control" id="newCourseTitle" name="title">
                     </div>
                 </div>
-                <div class="form-group">
-                    <!--Drop down for selecting a category-->
-                    <label for="newCourseCategory">Select a Course Category/Department:</label>
-                    <select class="form-control" id="newCourseCategory" name="category">
-                        <option value="-1">Choose a Category...</option>
-                    </select>
+                <div class="row form-group">
+                    <div class="col-6">
+                        <!--Drop down for selecting a category-->
+                        <label for="newCourseCategory">Select a Course Category/Department:</label>
+                        <select class="form-control" id="newCourseCategory" name="category">
+                            <option value="-1">Choose a Category...</option>
+                        </select>
+                    </div>
+                    <div class="col-6">
+                        <label for="newCourseFee">Fee: </label>
+                        <div class="input-group input-group-sm mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-sm">$</span>
+                            </div>
+                            <input name="fee" id="newCourseFee" type="text" class="form-control" aria-label="Small"
+                                aria-describedby="inputGroup-sizing-sm">
+                        </div>
+                    </div>
                 </div>
                 <div class="row form-group">
                     <div class="col-6">
@@ -94,13 +106,13 @@
                             placeholder="MM/DD/YY">
                     </div>
                 </div>
-                <div id="errorMessageDiv">
+                <div id="errorMessageDiv" class="w-50 mx-auto">
                     <ul id="errorMessages">
                     </ul>
                 </div>
                 <div class="form-group text-center">
-                        <input class="btn btn-primary my-3" type="addCourseBtn" id="addCourseBtn" value="Add New Course">
-                        <input class="btn btn-danger my-3" type="cxlAddCourseBtn" id="cxlAddCourseBtn" value="Cancel">
+                    <input class="btn btn-primary my-3" type="addCourseBtn" id="addCourseBtn" value="Add New Course">
+                    <input class="btn btn-danger my-3" type="cxlAddCourseBtn" id="cxlAddCourseBtn" value="Cancel">
                 </div>
             </form>
         </fieldset>

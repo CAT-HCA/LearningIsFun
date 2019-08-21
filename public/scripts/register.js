@@ -50,7 +50,7 @@ $(function() {
 		$("#confirmRegBtn").prop("disabled", false);
 	});
 
-	//cancel button click event
+	//go back button click event
 	$("#goBackBtn").on("click", function() {
 		window.location.assign(previousUrl);
 	});

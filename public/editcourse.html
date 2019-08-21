@@ -13,13 +13,11 @@
     <!-- linking custom site CSS -->
     <link rel="stylesheet" type="text/css" href="css/site.css">
 
-    <!-- linking custom site CSS -->
-    <link rel="stylesheet" type="text/css" href="css/details.css">
 
     <!--Title and favicon in tab-->
     <link rel="icon" href="images/favicon.png" type="image/x-icon" />
     <!--receiving validation error for empty title, this text goes away once JS catches course name-->
-    <title id="courseTitle">*dynamically created*</title>
+    <title id="editCourseTitle">Edit Course</title>
 </head>
 
 <body>
@@ -38,28 +36,87 @@
         </div>
     </nav>
     <!--END NAV BAR-->
+
     <!-- BREADCRUMB NAV-->
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="courses.html">Browse Courses</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Course Details</li>
+            <li class="breadcrumb-item active" aria-current="page">Edit Course</li>
         </ol>
     </nav>
-
     <!-- END OF BREADCRUMB NAV-->
-    <!-- MAIN CONTENT -->
+
+    <!-- START OF MAIN CONTENT-->
     <main class="container mt-3">
         <!--Display results table, dynamically created in js-->
         <h1 class="text-primary text-center font-weight-light mt-3">Edit Course</h1>
-        <form id="detailTblOutputForm" action="#" method="GET">
-            <table id="detailTblOutput" class="container table table-sm table-bordered table-striped col-8">
-                <tbody id="tableBody">
-                </tbody>
-            </table>
-        </form>
+        <fieldset class="border border-primary p-3 rounded bg-light col-10 mx-auto">
+            <legend class="font-weight-light text-white w-50 border border-primary rounded">Course Details
+            </legend>
+            <form id="editCourseForm" action="#" class="container border-light rounded bg-light">
+                <div class="row form-group">
+                    <div class="col-6">
+                        <label for="editCourseId">Course ID: </label>
+                        <input type="text" class="form-control" id="editCourseId" name="courseid" readonly>
+                    </div>
+                    <div class="col-6">
+                        <label for="editCourseName">Course Title: </label>
+                        <input type="text" class="form-control" id="editCourseName" name="title">
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-6">
+                        <label for="editCategory">Category: </label>
+                        <input type="text" class="form-control" id="editCategory" name="category" readonly>
+                    </div>
+                    <div class="col-6">
+                        <label for="editFee">Fee: </label>
+                        <div class="input-group input-group-sm mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroup-sizing-sm">$</span>
+                            </div>
+                            <input name="fee" id="editFee" type="text" class="form-control" aria-label="Small"
+                                aria-describedby="inputGroup-sizing-sm">
+                        </div>
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-6">
+                        <label for="editCourseLocation">Location: </label>
+                        <input type="text" class="form-control" id="editCourseLocation" name="location">
+                    </div>
+                    <div class="col-6">
+                        <label for="editCourseMeets">Meeting Days/Times: </label>
+                        <input type="text" class="form-control" id="editCourseMeets" name="meets"
+                            placeholder="ex. Th from 7:00 PM to 9:00 PM">
+                    </div>
+                </div>
+                <div class="row form-group">
+                    <div class="col-6">
+                        <label for="editCourseStartDate">Start Date: </label>
+                        <input type="text" class="form-control" id="editCourseStartDate" name="startdate"
+                            placeholder="MM/DD/YY">
+                    </div>
+                    <div class="col-6">
+                        <label for="editCourseEndDate">End Date: </label>
+                        <input type="text" class="form-control" id="editCourseEndDate" name="enddate"
+                            placeholder="MM/DD/YY">
+                    </div>
+                </div>
+                <div id="editErrorMessageDiv" class="w-50 mx-auto">
+                    <ul id="editErrorMessages">
+                    </ul>
+                </div>
+                <div class="form-group text-center">
+                    <input class="btn btn-primary my-3" type="editCourseBtn" id="editCourseBtn" value="Edit Course">
+                    <input class="btn btn-danger my-3" type="clearEditCourseBtn" id="clearEditCourseBtn"
+                        value="Clear Changes">
+                    <input class="btn btn-danger my-3" type="cxlEditCourseBtn" id="cxlEditCourseBtn" value="Cancel">
 
-
-
+                </div>
+            </form>
+        </fieldset>
+    </main>
     <!-- END OF MAIN CONTENT -->
 
     <!-- FOOTER -->
@@ -80,7 +137,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-    <script src="scripts/details.js"></script>
+    <script src="scripts/editcourse.js"></script>
 </body>
 
 </html>
