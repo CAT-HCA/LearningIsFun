@@ -46,9 +46,10 @@ function createCourseTable(coursesObjs) {
 			coursesObjs[i].Title +
 			"</td><td>" +
 			coursesObjs[i].StartDate +
-			"</td><td><a href='details.html?id=" +
+			"</td><td class='text-center'><a class='btn btn-sm btn-primary font-weight-light' href='details.html?id=" +
 			coursesObjs[i].CourseId +
-			"'>View Details</a></td></tr>";
+			"'>View Details</a></td><td class='text-center'><a class='btn btn-sm btn-primary font-weight-light' href='editcourse.html?id=" + coursesObjs[i].CourseId + "'>Edit Course</a></td></tr>"
+			
 		$("#coursesTableBody").append(dynamicTableRow);
 		$("#courseTblOutput").show();
 	}
