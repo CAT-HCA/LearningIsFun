@@ -99,23 +99,28 @@ app.get("/register.html", function(req, res) {
 	res.sendFile(__dirname + "/public/" + "register.html");
 });
 
-
 /* THIS CODE ALLOWS REQUESTS FOR THE API THROUGH */
 
 // GET CATEGORIES
 
 app.get("/api/categories", function(req, res) {
 	console.log("Got a GET request for categories");
+	try {
+		let data = fs.readFileSync(__dirname + "/data/" + "categories.json", "utf8");
 
-	let data = fs.readFileSync(__dirname + "/data/" + "categories.json", "utf8");
+		data = JSON.parse(data);
 
-	data = JSON.parse(data);
+		//console.log("Returned data is: ");
 
-	//console.log("Returned data is: ");
+		//console.log(data.Category + " - " + data.Value);
 
-	//console.log(data.Category + " - " + data.Value);
+		res.end(JSON.stringify(data));
+	} catch (err) {
+		console.log("SUCCESSFULLY CATCHING ERROR WOO!");
+		res.status(500).send("SERVERERROR");
 
-	res.end(JSON.stringify(data));
+		return;
+	}
 });
 
 // GET ALL COURSES
