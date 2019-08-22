@@ -33,11 +33,12 @@ On the details page, you can see more in depth information about each course and
 
 ## Credits
 Jumbotron Image on index page by [Full of Whimsy Photograpy](https://fullofwhimsy.com/)
+
 UCONN Athletics information from wikipedia.com
 
-Includes links to UCONN Athletics and UCONN Marching Band
-[UCONN Athletics](https://uconnhuskies.com/)
-[UCONN Marching Band]([http://uconnband.org/])
+Includes links to [UCONN Athletics](https://uconnhuskies.com/) and [UCONN Marching Band](http://uconnband.org/)
+
+
 
 NOT a real college, inspired by the University of Connecticut. Created for educational purposes only.
 
